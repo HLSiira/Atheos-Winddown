@@ -1,0 +1,19 @@
+{
+	"author": "HLSiira",
+	"name": "Winddown",
+	"description": "Subtle reminder to stand up and exercise",
+	"category": "Health",
+	"status": "available",
+	"url": "https://github.com/HLSiira/Atheos-Winddown",
+	"version": "1.0.0",
+	"config": [{
+		"file": "dialog.php",
+		"icon": "fas fa-heartbeat",
+		"title": "Winddown"
+	}],
+	"rightbar": [{
+		"action": "atheos.winddown.rest();",
+		"icon": "fas fa-heartbeat",
+		"title": "Get back to work"
+	}]
+}
