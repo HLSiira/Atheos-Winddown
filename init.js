@@ -17,11 +17,11 @@
 (function(global) {
 
 	var atheos = global.atheos,
-		amplify = global.amplify;
+		carbon = global.carbon;
 
 	var self = null;
 
-	amplify.subscribe('system.loadExtra', () => atheos.winddown.init());
+	carbon.subscribe('system.loadExtra', () => atheos.winddown.init());
 
 	atheos.winddown = {
 		enabled: true,
@@ -31,16 +31,16 @@
 
 		init: function() {
 			self = this;
-			amplify.subscribe('settings.loaded settings.save', function() {
+			carbon.subscribe('settings.loaded settings.save', function() {
 				self.enabled = atheos.storage('winddown.enabled') || self.enabled;
 				self.restTime = atheos.storage('winddown.restTime') || self.restTime;
 				self.fadeTime = atheos.storage('winddown.fadeTime') || self.fadeTime;
 				self.nextRest = Date.now() + (self.restTime * 1000 * 60);
 
 				if (self.enabled) {
-					amplify.subscribe('chrono.mega', self.check);
+					carbon.subscribe('chrono.mega', self.check);
 				} else {
-					amplify.unsubscribe('chrono.mega', self.check);
+					carbon.unsubscribe('chrono.mega', self.check);
 				}
 			});
 		},
@@ -57,7 +57,7 @@
 				document.body.style.filter = 'grayscale(' + percent + ')';
 
 				if (percent > 1) {
-					amplify.unsubscribe('chrono.mega', self.check);
+					carbon.unsubscribe('chrono.mega', self.check);
 				}
 			}
 		},
@@ -66,7 +66,7 @@
 			self.nextRest = Date.now() + (self.restTime * 1000 * 60);
 			document.body.style.filter = '';
 			if (self.enabled) {
-				amplify.subscribe('chrono.mega', self.check);
+				carbon.subscribe('chrono.mega', self.check);
 			}
 		}
 	};

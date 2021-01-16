@@ -5,7 +5,7 @@
 	"category": "Utility",
 	"status": "available",
 	"url": "https://github.com/HLSiira/Atheos-Winddown",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"config": [{
 		"file": "dialog.php",
 		"icon": "fas fa-heartbeat",
