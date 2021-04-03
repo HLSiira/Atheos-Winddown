@@ -12,13 +12,10 @@
 //												- Liam Siira
 //////////////////////////////////////////////////////////////////////////////80
 
-
-
 (function(global) {
 
-	var atheos = global.atheos,
-		carbon = global.carbon;
-
+	var atheos = global.atheos;
+	
 	var self = null;
 
 	carbon.subscribe('system.loadExtra', () => atheos.winddown.init());
@@ -32,9 +29,9 @@
 		init: function() {
 			self = this;
 			carbon.subscribe('settings.loaded settings.save', function() {
-				self.enabled = atheos.storage('winddown.enabled') || self.enabled;
-				self.restTime = atheos.storage('winddown.restTime') || self.restTime;
-				self.fadeTime = atheos.storage('winddown.fadeTime') || self.fadeTime;
+				self.enabled = storage('winddown.enabled') || self.enabled;
+				self.restTime = storage('winddown.restTime') || self.restTime;
+				self.fadeTime = storage('winddown.fadeTime') || self.fadeTime;
 				self.nextRest = Date.now() + (self.restTime * 1000 * 60);
 
 				if (self.enabled) {
